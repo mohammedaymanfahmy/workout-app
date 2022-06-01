@@ -18,7 +18,7 @@ const Stack = createNativeStackNavigator();
 function RootNavigator() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Root" component={BottomTabNavigator} />
+      <Stack.Screen name="Root12" component={BottomTabNavigator} />
     </Stack.Navigator>
   );
 }
@@ -32,7 +32,7 @@ function BottomTabNavigator() {
         component={HomeScreen}
         options={{
           unmountOnBlur: true,
-          tabBarIcon: () => <FontAwesome name="home" size={24} color="black" />,
+          tabBarIcon: () => <FontAwesome name="home" size={24} color="gray" />,
         }}
       />
 
@@ -42,7 +42,7 @@ function BottomTabNavigator() {
         options={{
           unmountOnBlur: true,
           tabBarIcon: ({ color, size }) => (
-            <Entypo name="add-to-list" size={size} color="color" />
+            <Entypo name="add-to-list" size={size} color={color} />
           ),
         }}
       />
