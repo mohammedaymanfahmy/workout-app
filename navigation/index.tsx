@@ -4,6 +4,7 @@ import HomeScreen from "../Screens/HomeScreen";
 import PlannerScreen from "./../Screens/PlannerScreen";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { FontAwesome, Entypo } from "@expo/vector-icons";
+import WorkoutDetailScreen from "./../Screens/WorkoutDetailScreen";
 
 export default function Navigation() {
   return (
@@ -18,7 +19,17 @@ const Stack = createNativeStackNavigator();
 function RootNavigator() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Root12" component={BottomTabNavigator} />
+      <Stack.Screen
+        name="Root"
+        component={BottomTabNavigator}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="WorkoutDetailScreen"
+        component={WorkoutDetailScreen}
+        options={{ title: "workout info" }}
+      />
     </Stack.Navigator>
   );
 }

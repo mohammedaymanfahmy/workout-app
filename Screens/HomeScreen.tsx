@@ -1,19 +1,28 @@
 // import { useEffect } from "react";
-import { View, Text, StyleSheet, FlatList } from "react-native";
+import { View, Text, StyleSheet, FlatList, Pressable } from "react-native";
 import { NativeStackHeaderProps } from "@react-navigation/native-stack";
-import data from "../data.json";
-import { Workout } from "./../types/data";
 import { WoroutItem } from "../components/workoutItem";
-import { MontserratText } from "../components/MontserratText";
+import { useWorkouts } from "./../hooks/useWorkout";
 
 export default function HomeScreen({ navigation }: NativeStackHeaderProps) {
+  const workouts = useWorkouts();
   return (
     <View style={styles.container}>
       <Text style={styles.header}>My Workouts</Text>
-      <MontserratText style={{ fontSize: 40 }}>My Workouts</MontserratText>
+      {/* <MontserratText style={{ fontSize: 20 }}>My Workouts</MontserratText> */}
       <FlatList
-        data={data as Array<Workout>}
-        renderItem={WoroutItem}
+        data={workouts}
+        renderItem={({ item }) => {
+          return (
+            <Pressable
+              onPress={() =>
+                navigation.navigate("WorkoutDetailScreen", { slug: item.slug })
+              }
+            >
+              <WoroutItem item={item} />
+            </Pressable>
+          );
+        }}
         keyExtractor={(item) => item.slug}
       />
     </View>
