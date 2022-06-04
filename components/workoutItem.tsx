@@ -1,14 +1,24 @@
-import { Text, View, StyleSheet } from "react-native";
+import { ReactNode } from "react";
+import { Text, View, StyleSheet, StyleProp, ViewStyle } from "react-native";
 
 import { Workout } from "../types/data";
 import { formatSec, secToMin } from "../utils/time";
 
-export const WoroutItem = ({ item }: { item: Workout }) => {
+export const WoroutItem = ({
+  item,
+  children,
+  childStyles,
+}: {
+  item: Workout;
+  children?: ReactNode;
+  childStyles?: StyleProp<ViewStyle>;
+}) => {
   return (
     <View style={styles.container}>
       <Text style={styles.name}>{item.name}</Text>
       <Text style={styles.duration}>Duration: {formatSec(item.duration)}</Text>
       <Text style={styles.dificulty}>Dificulty: {item.difficulty}</Text>
+      {children && <View style={childStyles}>{children}</View>}
     </View>
   );
 };

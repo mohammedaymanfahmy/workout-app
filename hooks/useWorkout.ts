@@ -8,7 +8,7 @@ export const useWorkouts = () => {
   const isFoucasd = useIsFocused();
   useEffect(() => {
     async function getData() {
-      console.log("Gitting Data!");
+      //console.log("Gitting Data!");
       const _workouts = await getWorouts();
       setWorkouts(_workouts);
     }

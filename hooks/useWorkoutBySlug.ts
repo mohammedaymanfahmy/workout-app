@@ -3,7 +3,7 @@ import { getWoroutbySlug, getWorouts } from "../storage/workouts";
 import { Workout } from "../types/data";
 
 export const useWorkoutBySlug = (slug: string) => {
-  const [Workout, setWorkout] = useState<Workout>();
+  const [workout, setWorkout] = useState<Workout>();
   useEffect(() => {
     async function getData() {
       // console.log("Gitting Data!");
@@ -14,5 +14,5 @@ export const useWorkoutBySlug = (slug: string) => {
     getData();
   }, []);
 
-  return Workout;
+  return workout;
 };
